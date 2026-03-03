@@ -1,0 +1,4 @@
+Normativa,Tipologia,Modello,Produttivita,Produzione,Dimensioni,Pressa,GruppoTaglio,Trabatto,Elevatore,Essiccatoio,Raffreddatore,TipologiaImpianto,OreSE,OreSSP,OreSSH,OreCQ,OreCIE,OreCIS,CostoMateriali,CostoManodopera,CostoTotale
+CE,Pasta Corta,TCM Ecosystem,750,500 kg/h,12x4x3m,Pressa P1,GT-200,TR-100,EL-50,ESS-300,RAF-100,Standard,120,80,60,40,30,20,45000,25000,70000
+CE,Pasta Lunga,TLM Ecosystem,1000,800 kg/h,18x5x4m,Pressa P2,GT-350,TR-200,EL-80,ESS-500,RAF-200,Premium,200,120,90,60,50,35,78000,42000,120000
+CE,Pasta Corta,TCM Compact,500,350 kg/h,8x3x2.5m,Pressa P1-C,GT-150,TR-80,EL-30,ESS-200,RAF-80,Compact,90,60,45,30,25,15,32000,18000,50000
