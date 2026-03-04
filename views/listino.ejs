@@ -55,206 +55,137 @@
             </div>
             <% } %>
 
-                <% if (dati && dati.length> 0) { %>
-                    <% const item=dati[0]; %>
-
-                        <!-- ═══════════════════════════════════════════
-           SEZIONE: INFORMAZIONI GENERALI
+                <!-- ═══════════════════════════════════════════
+           SEZIONE: SELEZIONE PRODOTTO (Dropdown a cascata)
            ═══════════════════════════════════════════ -->
-                        <section class="section" id="info-section">
-                            <h2 class="section-title">Informazioni Generali</h2>
-                            <div class="info-grid">
-                                <div class="info-card">
-                                    <span class="info-label">Normativa</span>
-                                    <span class="info-value" id="info-normativa">
-                                        <%= item.Normativa %>
-                                    </span>
-                                </div>
-                                <div class="info-card">
-                                    <span class="info-label">Tipologia</span>
-                                    <span class="info-value" id="info-tipologia">
-                                        <%= item.Tipologia %>
-                                    </span>
-                                </div>
-                                <div class="info-card">
-                                    <span class="info-label">Modello</span>
-                                    <span class="info-value" id="info-modello">
-                                        <%= item.Modello %>
-                                    </span>
-                                </div>
-                                <div class="info-card">
-                                    <span class="info-label">Produttività</span>
-                                    <span class="info-value" id="info-produttivita">
-                                        <%= item.Produttivita %>
-                                    </span>
-                                </div>
+                <section class="section" id="selezione-section">
+                    <h2 class="section-title">Configurazione Prodotto</h2>
+                    <div class="select-grid">
+                        <div class="select-card">
+                            <label class="select-label" for="select-normativa">Normativa</label>
+                            <div class="select-wrapper">
+                                <select id="select-normativa" class="select-input" onchange="onNormativaChange()">
+                                    <option value="">Seleziona normativa...</option>
+                                </select>
+                                <svg class="select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
                             </div>
-                        </section>
+                        </div>
+                        <div class="select-card">
+                            <label class="select-label" for="select-tipologia">Tipologia</label>
+                            <div class="select-wrapper">
+                                <select id="select-tipologia" class="select-input" disabled
+                                    onchange="onTipologiaChange()">
+                                    <option value="">Seleziona tipologia...</option>
+                                </select>
+                                <svg class="select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="select-card">
+                            <label class="select-label" for="select-modello">Modello</label>
+                            <div class="select-wrapper">
+                                <select id="select-modello" class="select-input" disabled onchange="onModelloChange()">
+                                    <option value="">Seleziona modello...</option>
+                                </select>
+                                <svg class="select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="select-card">
+                            <label class="select-label" for="select-produzione">Produttività</label>
+                            <div class="select-wrapper">
+                                <select id="select-produzione" class="select-input" disabled
+                                    onchange="onProduzioneChange()">
+                                    <option value="">Seleziona produttività...</option>
+                                </select>
+                                <svg class="select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-                        <!-- ═══════════════════════════════════════════
-           SEZIONE: OPTIONALS
+                <!-- ═══════════════════════════════════════════
+           SEZIONE: DETTAGLIO IMPIANTO (dinamico)
            ═══════════════════════════════════════════ -->
-                        <section class="section" id="optionals-section">
-                            <h2 class="section-title">Optionals</h2>
-                            <div class="optionals-grid">
-                                <label class="optional-card" id="optional-380">
-                                    <input type="checkbox" name="optional_380" class="optional-checkbox">
-                                    <span class="checkmark"></span>
-                                    <div class="optional-text">
-                                        <span class="optional-title">Alimentazione Speciale</span>
-                                        <span class="optional-detail">380/440V 60Hz</span>
-                                    </div>
-                                </label>
-                                <label class="optional-card" id="optional-220">
-                                    <input type="checkbox" name="optional_220" class="optional-checkbox">
-                                    <span class="checkmark"></span>
-                                    <div class="optional-text">
-                                        <span class="optional-title">Alimentazione Speciale</span>
-                                        <span class="optional-detail">220V 50/60Hz</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </section>
+                <section class="section hidden" id="impianto-section">
+                    <h2 class="section-title">Dettaglio Impianto</h2>
+                    <div class="table-wrapper">
+                        <table class="data-table" id="table-impianto">
+                            <thead>
+                                <tr id="impianto-header"></tr>
+                            </thead>
+                            <tbody>
+                                <tr id="impianto-row"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
 
-                        <!-- ═══════════════════════════════════════════
-           SEZIONE: DETTAGLIO IMPIANTO
+                <!-- ═══════════════════════════════════════════
+           SEZIONE: OPTIONALS (dinamico)
            ═══════════════════════════════════════════ -->
-                        <section class="section" id="impianto-section">
-                            <h2 class="section-title">Dettaglio Impianto</h2>
-                            <div class="table-wrapper">
-                                <table class="data-table" id="table-impianto">
-                                    <thead>
-                                        <tr>
-                                            <th>Produzione</th>
-                                            <th>Dimensioni</th>
-                                            <th>Pressa</th>
-                                            <th>Gruppo di Taglio</th>
-                                            <th>Trabatto</th>
-                                            <th>Elevatore</th>
-                                            <th>Essiccatoio</th>
-                                            <th>Raffreddatore</th>
-                                            <th>Tipologia</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% dati.forEach((row, index)=> { %>
-                                            <tr id="impianto-row-<%= index %>">
-                                                <td>
-                                                    <%= row.Produzione %>
-                                                </td>
-                                                <td>
-                                                    <%= row.Dimensioni %>
-                                                </td>
-                                                <td>
-                                                    <%= row.Pressa %>
-                                                </td>
-                                                <td>
-                                                    <%= row.GruppoTaglio %>
-                                                </td>
-                                                <td>
-                                                    <%= row.Trabatto %>
-                                                </td>
-                                                <td>
-                                                    <%= row.Elevatore %>
-                                                </td>
-                                                <td>
-                                                    <%= row.Essiccatoio %>
-                                                </td>
-                                                <td>
-                                                    <%= row.Raffreddatore %>
-                                                </td>
-                                                <td>
-                                                    <%= row.TipologiaImpianto %>
-                                                </td>
-                                            </tr>
-                                            <% }); %>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </section>
+                <section class="section hidden" id="optionals-section">
+                    <h2 class="section-title">Optionals</h2>
+                    <div class="optionals-grid" id="optionals-grid">
+                        <!-- Generati via JS -->
+                    </div>
+                </section>
 
-                        <!-- ═══════════════════════════════════════════
-           SEZIONE: COSTI
+                <!-- ═══════════════════════════════════════════
+           SEZIONE: COSTI (dinamico)
            ═══════════════════════════════════════════ -->
-                        <section class="section" id="costi-section">
-                            <h2 class="section-title">Costi</h2>
-                            <div class="table-wrapper">
-                                <table class="data-table" id="table-costi">
-                                    <thead>
-                                        <tr>
-                                            <th>Ore S.E.</th>
-                                            <th>Ore S.S.P.</th>
-                                            <th>Ore S.S.H.</th>
-                                            <th>Ore C.Q.</th>
-                                            <th>Ore C.I.E.</th>
-                                            <th>Ore C.I.S.</th>
-                                            <th>Costo Materiali</th>
-                                            <th>Costo Manodopera</th>
-                                            <th class="highlight">Costo Totale</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% dati.forEach((row, index)=> { %>
-                                            <tr id="costi-row-<%= index %>">
-                                                <td>
-                                                    <%= row.OreSE %>
-                                                </td>
-                                                <td>
-                                                    <%= row.OreSSP %>
-                                                </td>
-                                                <td>
-                                                    <%= row.OreSSH %>
-                                                </td>
-                                                <td>
-                                                    <%= row.OreCQ %>
-                                                </td>
-                                                <td>
-                                                    <%= row.OreCIE %>
-                                                </td>
-                                                <td>
-                                                    <%= row.OreCIS %>
-                                                </td>
-                                                <td>&euro; <%= Number(row.CostoMateriali).toLocaleString('it-IT') %>
-                                                </td>
-                                                <td>&euro; <%= Number(row.CostoManodopera).toLocaleString('it-IT') %>
-                                                </td>
-                                                <td class="highlight"><strong>&euro; <%=
-                                                            Number(row.CostoTotale).toLocaleString('it-IT') %></strong>
-                                                </td>
-                                            </tr>
-                                            <% }); %>
-                                    </tbody>
-                                </table>
-                            </div>
+                <section class="section hidden" id="costi-section">
+                    <h2 class="section-title">Costi</h2>
+                    <div class="costi-summary" id="costi-summary">
+                        <!-- Generati via JS -->
+                    </div>
+                    <div class="table-wrapper" style="margin-top: 20px;">
+                        <table class="data-table" id="table-ore">
+                            <thead>
+                                <tr>
+                                    <th>Ore S.E.</th>
+                                    <th>Ore S.S.P.</th>
+                                    <th>Ore S.S.H.</th>
+                                    <th>Ore C.Q.</th>
+                                    <th>Ore C.I.E.</th>
+                                    <th>Ore C.I.S.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="ore-row"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
 
-                            <!-- Pulsante ESPANDI -->
-                            <div class="expand-wrapper">
-                                <button class="btn-expand" id="expand-button" onclick="toggleExpand()">
-                                    <span>ESPANDI</span>
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="6 9 12 15 18 9" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </section>
-
-                        <% } else { %>
-                            <!-- Nessun dato disponibile -->
-                            <section class="section">
-                                <div class="empty-state">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#86868b"
-                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                        <polyline points="14 2 14 8 20 8" />
-                                        <line x1="16" y1="13" x2="8" y2="13" />
-                                        <line x1="16" y1="17" x2="8" y2="17" />
-                                    </svg>
-                                    <p>Nessun dato disponibile nel listino.</p>
-                                    <span>Carica un file CSV nella cartella <code>data/</code> per iniziare.</span>
-                                </div>
-                            </section>
-                            <% } %>
+                <!-- Placeholder quando nessun prodotto è selezionato -->
+                <section class="section" id="empty-state-section">
+                    <div class="empty-state">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#86868b" stroke-width="1"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                        <p>Seleziona un prodotto per visualizzarne i dettagli.</p>
+                        <span>Usa i menu sopra per scegliere normativa, tipologia, modello e produttività.</span>
+                    </div>
+                </section>
 
     </main>
 
@@ -265,34 +196,383 @@
             </strong></p>
     </footer>
 
-    <!-- Script -->
+    <!-- ═══════════════════════════════════════════
+       SCRIPT — Logica dropdown a cascata e caricamento dati
+       ═══════════════════════════════════════════ -->
     <script>
         /**
-         * Pulisce la selezione degli optionals (deseleziona tutte le checkbox)
+         * Riferimenti DOM
+         */
+        const selNormativa = document.getElementById('select-normativa');
+        const selTipologia = document.getElementById('select-tipologia');
+        const selModello = document.getElementById('select-modello');
+        const selProduzione = document.getElementById('select-produzione');
+
+        const impiantoSection = document.getElementById('impianto-section');
+        const optionalsSection = document.getElementById('optionals-section');
+        const costiSection = document.getElementById('costi-section');
+        const emptyState = document.getElementById('empty-state-section');
+
+        /**
+         * Inizializzazione: carica le opzioni iniziali
+         */
+        async function init() {
+            try {
+                const res = await fetch('/listino/api/filtri');
+                const data = await res.json();
+
+                // Popola normative
+                populateSelect(selNormativa, data.normative);
+                // Popola tipologie (tutte, senza filtro iniziale)
+                populateSelect(selTipologia, data.tipologie);
+            } catch (err) {
+                console.error('Errore init:', err);
+            }
+        }
+
+        /**
+         * Popola un select con opzioni
+         */
+        function populateSelect(select, options, placeholder) {
+            const currentVal = select.value;
+            select.innerHTML = '';
+
+            const defaultOpt = document.createElement('option');
+            defaultOpt.value = '';
+            defaultOpt.textContent = placeholder || select.previousElementSibling?.textContent
+                ? `Seleziona ${(select.previousElementSibling?.textContent || '').toLowerCase()}...`
+                : 'Seleziona...';
+            select.appendChild(defaultOpt);
+
+            options.forEach(opt => {
+                const o = document.createElement('option');
+                o.value = opt;
+                o.textContent = opt;
+                select.appendChild(o);
+            });
+
+            // Mantieni la selezione se ancora valida
+            if (options.includes(currentVal)) {
+                select.value = currentVal;
+            }
+        }
+
+        /**
+         * Handler: cambio normativa
+         */
+        function onNormativaChange() {
+            const normativa = selNormativa.value;
+
+            if (normativa) {
+                selTipologia.disabled = false;
+                // Ricarica tipologie (le tipologie non dipendono dalla normativa,
+                // ma abilitiamo il flusso)
+                fetchFiltri();
+            } else {
+                resetFrom('tipologia');
+            }
+
+            // Se un prodotto era già completamente selezionato, ricarica con la nuova normativa
+            if (allSelected()) {
+                loadProduct();
+            }
+        }
+
+        /**
+         * Handler: cambio tipologia
+         */
+        async function onTipologiaChange() {
+            const tipologia = selTipologia.value;
+
+            if (tipologia) {
+                // Carica modelli filtrati per tipologia
+                try {
+                    const res = await fetch(`/listino/api/filtri?tipologia=${encodeURIComponent(tipologia)}`);
+                    const data = await res.json();
+                    populateSelect(selModello, data.modelli, 'Seleziona modello...');
+                    selModello.disabled = false;
+                    // Reset solo i downstream (produzione)
+                    selProduzione.innerHTML = '<option value="">Seleziona produttività...</option>';
+                    selProduzione.value = '';
+                    selProduzione.disabled = true;
+                    hideProductDetails();
+                } catch (err) {
+                    console.error('Errore caricamento modelli:', err);
+                }
+            } else {
+                resetFrom('modello');
+            }
+        }
+
+        /**
+         * Handler: cambio modello
+         */
+        async function onModelloChange() {
+            const tipologia = selTipologia.value;
+            const modello = selModello.value;
+
+            if (modello) {
+                // Carica produzioni filtrate per tipologia e modello
+                try {
+                    const res = await fetch(`/listino/api/filtri?tipologia=${encodeURIComponent(tipologia)}&modello=${encodeURIComponent(modello)}`);
+                    const data = await res.json();
+                    populateSelect(selProduzione, data.produzioni, 'Seleziona produttività...');
+                    selProduzione.disabled = false;
+                    hideProductDetails();
+                } catch (err) {
+                    console.error('Errore caricamento produzioni:', err);
+                }
+            } else {
+                resetFrom('produzione');
+            }
+        }
+
+        /**
+         * Handler: cambio produzione — carica il prodotto completo
+         */
+        function onProduzioneChange() {
+            if (allSelected()) {
+                loadProduct();
+            } else {
+                hideProductDetails();
+            }
+        }
+
+        /**
+         * Controlla se tutti i dropdown sono selezionati
+         */
+        function allSelected() {
+            return selNormativa.value && selTipologia.value && selModello.value && selProduzione.value;
+        }
+
+        /**
+         * Resetta i dropdown da un certo livello in poi
+         */
+        function resetFrom(level) {
+            const levels = ['tipologia', 'modello', 'produzione'];
+            const idx = levels.indexOf(level);
+
+            if (idx <= 0) {
+                selTipologia.value = '';
+                selTipologia.disabled = !selNormativa.value;
+            }
+            if (idx <= 1) {
+                selModello.innerHTML = '<option value="">Seleziona modello...</option>';
+                selModello.value = '';
+                selModello.disabled = true;
+            }
+            if (idx <= 2) {
+                selProduzione.innerHTML = '<option value="">Seleziona produttività...</option>';
+                selProduzione.value = '';
+                selProduzione.disabled = true;
+            }
+
+            hideProductDetails();
+        }
+
+        /**
+         * Carica dati filtri iniziali
+         */
+        async function fetchFiltri() {
+            try {
+                const res = await fetch('/listino/api/filtri');
+                const data = await res.json();
+                populateSelect(selTipologia, data.tipologie, 'Seleziona tipologia...');
+            } catch (err) {
+                console.error('Errore filtri:', err);
+            }
+        }
+
+        /**
+         * Carica i dettagli del prodotto selezionato
+         */
+        async function loadProduct() {
+            const normativa = selNormativa.value;
+            const tipologia = selTipologia.value;
+            const modello = selModello.value;
+            const produzione = selProduzione.value;
+
+            try {
+                // Carica prodotto e optionals in parallelo
+                const [prodRes, optRes] = await Promise.all([
+                    fetch(`/listino/api/prodotto?normativa=${encodeURIComponent(normativa)}&tipologia=${encodeURIComponent(tipologia)}&modello=${encodeURIComponent(modello)}&produzione=${encodeURIComponent(produzione)}`),
+                    fetch(`/listino/api/optionals?tipologia=${encodeURIComponent(tipologia)}&modello=${encodeURIComponent(modello)}&normativa=${encodeURIComponent(normativa)}`)
+                ]);
+
+                if (!prodRes.ok) {
+                    hideProductDetails();
+                    return;
+                }
+
+                const prodotto = await prodRes.json();
+                const optionals = await optRes.json();
+
+                renderProduct(prodotto);
+                renderOptionals(optionals);
+
+                // Mostra le sezioni
+                emptyState.classList.add('hidden');
+                impiantoSection.classList.remove('hidden');
+                costiSection.classList.remove('hidden');
+
+                if (optionals.length > 0) {
+                    optionalsSection.classList.remove('hidden');
+                } else {
+                    optionalsSection.classList.add('hidden');
+                }
+
+            } catch (err) {
+                console.error('Errore caricamento prodotto:', err);
+            }
+        }
+
+        /**
+         * Renderizza i dettagli dell'impianto
+         */
+        function renderProduct(prodotto) {
+            // Tabella equipment
+            const headerRow = document.getElementById('impianto-header');
+            const dataRow = document.getElementById('impianto-row');
+            headerRow.innerHTML = '';
+            dataRow.innerHTML = '';
+
+            // Aggiungi la produzione come prima colonna
+            addTableCell(headerRow, 'Produzione', true);
+            addTableCell(dataRow, prodotto.produzione);
+
+            // Aggiungi equipment
+            Object.entries(prodotto.equipment).forEach(([label, value]) => {
+                addTableCell(headerRow, label, true);
+                addTableCell(dataRow, value);
+            });
+
+            // Aggiungi dimensioni se presenti
+            if (prodotto.dimensioni) {
+                addTableCell(headerRow, 'Dimensioni', true);
+                addTableCell(dataRow, prodotto.dimensioni);
+            }
+
+            // Tabella ore
+            const oreRow = document.getElementById('ore-row');
+            oreRow.innerHTML = '';
+            const ore = prodotto.ore;
+            addTableCell(oreRow, ore.studiElettromeccanico);
+            addTableCell(oreRow, ore.studioSoftwarePLC);
+            addTableCell(oreRow, ore.studioSoftwareHMI);
+            addTableCell(oreRow, ore.costruzioneQuadro);
+            addTableCell(oreRow, ore.collaudoElettromeccanico);
+            addTableCell(oreRow, ore.collaudoSoftware);
+
+            // Riepilogo costi
+            const costiSummary = document.getElementById('costi-summary');
+            const costi = prodotto.costi;
+            costiSummary.innerHTML = `
+                <div class="costi-grid">
+                    <div class="costo-card">
+                        <span class="costo-label">Costo Manodopera</span>
+                        <span class="costo-value">&euro; ${formatMoney(costi.manodopera)}</span>
+                    </div>
+                    <div class="costo-card">
+                        <span class="costo-label">Costo Materiali</span>
+                        <span class="costo-value">&euro; ${formatMoney(costi.materiali)}</span>
+                    </div>
+                    <div class="costo-card costo-card-total">
+                        <span class="costo-label">Costo Totale</span>
+                        <span class="costo-value costo-total">&euro; ${formatMoney(costi.totale)}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        /**
+         * Renderizza gli optionals
+         */
+        function renderOptionals(optionals) {
+            const grid = document.getElementById('optionals-grid');
+            grid.innerHTML = '';
+
+            optionals.forEach(opt => {
+                const card = document.createElement('label');
+                card.className = 'optional-card';
+                card.id = `optional-${opt.id}`;
+                card.innerHTML = `
+                    <input type="checkbox" name="optional_${opt.id}" class="optional-checkbox"
+                           data-costo-manodopera="${opt.costi.manodopera}"
+                           data-costo-materiali="${opt.costi.materiali}"
+                           data-costo-totale="${opt.costi.totale}"
+                           onchange="recalculateTotals()">
+                    <span class="checkmark"></span>
+                    <div class="optional-text">
+                        <span class="optional-title">${escapeHtml(opt.descrizione)}</span>
+                        <span class="optional-detail">&euro; ${formatMoney(opt.costi.totale)}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        /**
+         * Ricalcola i totali con gli optionals selezionati
+         */
+        function recalculateTotals() {
+            // Per ora, i costi sono quelli del prodotto base + optionals selezionati
+            // Questa funzione è un placeholder per funzionalità futura
+        }
+
+        /**
+         * Nasconde le sezioni di dettaglio
+         */
+        function hideProductDetails() {
+            impiantoSection.classList.add('hidden');
+            optionalsSection.classList.add('hidden');
+            costiSection.classList.add('hidden');
+            emptyState.classList.remove('hidden');
+        }
+
+        /**
+         * Pulisce tutte le selezioni e torna allo stato iniziale
          */
         function clearSelection() {
+            selNormativa.value = '';
+            resetFrom('tipologia');
+            hideProductDetails();
+
+            // Deseleziona tutti gli optionals
             document.querySelectorAll('.optional-checkbox').forEach(cb => {
                 cb.checked = false;
             });
         }
 
         /**
-         * Alterna l'espansione della sezione costi (placeholder per funzionalità futura)
+         * Utilità: aggiunge una cella alla riga di una tabella
          */
-        function toggleExpand() {
-            const btn = document.getElementById('expand-button');
-            const costiSection = document.getElementById('costi-section');
-
-            costiSection.classList.toggle('expanded');
-
-            if (costiSection.classList.contains('expanded')) {
-                btn.querySelector('span').textContent = 'COMPRIMI';
-                btn.querySelector('svg').style.transform = 'rotate(180deg)';
-            } else {
-                btn.querySelector('span').textContent = 'ESPANDI';
-                btn.querySelector('svg').style.transform = 'rotate(0deg)';
-            }
+        function addTableCell(row, content, isHeader) {
+            const cell = document.createElement(isHeader ? 'th' : 'td');
+            cell.textContent = content;
+            row.appendChild(cell);
         }
+
+        /**
+         * Utilità: formatta un numero come valuta italiana
+         */
+        function formatMoney(num) {
+            return Number(num).toLocaleString('it-IT', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        /**
+         * Utilità: escape HTML per prevenire XSS
+         */
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ─── Avvio ───
+        init();
     </script>
 
 </body>

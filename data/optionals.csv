@@ -1,0 +1,24 @@
+Tipologia,Modello,ID,Descrizione,OreSE,OreSSP,OreSSH,OreCQ,OreCIE,OreCIS,CostoManodoperaCE,CostoManodoperaUL,CostoMaterialiCE,CostoMaterialiUL,CostoTotaleCE,CostoTotaleUL
+Pasta Corta,TCM Ecosystem,1,Alimentaizone Speciale (380/440V 60Hz),10,0,0,30,,,1240,1550,3702.22,4442.66,4942.22,5992.66
+Pasta Corta,TCM Ecosystem,2,Alimentaizone Speciale (220V 50/60Hz),30,0,0,90,,,3720,4650,8635.55,10362.66,12355.55,15012.66
+Pasta Corta,TCM Ecosystem,3,QE Climatizzati - Climatizzatori da tetto,8,0,0,24,,,992,1240,5008,6009.6,6000,7249.6
+Pasta Corta,TCM Ecosystem,4,QE Climatizzati - Climatizzatori da parete,8,0,0,24,,,992,1240,8908,10689.6,9900,11929.6
+Pasta Corta,TCM Ecosystem,5,Box Climatizzato per Sistema di Supervisione,8,0,0,20,,,876,1095,2924,3508.8,3800,4603.8
+Pasta Corta,TCM Ecosystem,6,2° Stazione di supervisione,2,0,0,1,,,103,128.75,5397,6476.4,5500,6605.15
+Pasta Corta,TCM Ecosystem,6,2° Stazione di supervisione,2,0,0,1,,,103,128.75,5397,6476.4,5500,6605.15
+Pasta Corta,TCM Ecosystem,7,Gestione Dosaggio Semola Gravimetrico (Acquisizione Celle + Hw + Sw),6,4,8,4,,,794,992.5,506,607.2,1300,1599.7
+Pasta Corta,TCM Ecosystem,8,Gestione Additivi - 1 Componente Liquido - Pompa Peristaltica + Tank con Miscelatore - Integrazione in QE + QE Preparazione,8,8,8,50,,,2354,2942.5,5646,6775.2,8000,9717.7
+Pasta Corta,TCM Ecosystem,9,Gestione Additivi - 1 Componente Secco - Microdosatore Volumetrico Storci- Integrazione in QE,10,8,8,10,,,1268,1585,932,1118.4,2200,2703.4
+Pasta Corta,TCM Ecosystem,10,Gestione Additivi - 1 Componente Secco - Microdosatore Gravimetrico Storci - Integrazione in QE,10,8,8,5,,,1123,1403.75,1677,2012.4,2800,3416.15
+Pasta Corta,TCM Ecosystem,11,Gestione Additivi - 1 Componente Secco/Liquido - Interfacciamento con QE Dosaggio Esterno (General Dosing - Schenck - Ecc),10,8,8,5,,,1123,1403.75,377,452.4,1500,1856.15
+Pasta Corta,TCM Ecosystem,12,Estrusori con Motori a Riluttanza,4,0,0,0,,,148,185,652,782.4,800,967.4
+Pasta Corta,TCM Ecosystem,13,Raffreddamento Olio Riduttori Viti di estrusione,8,8,8,24,,,1600,2000,500,600,2100,2600
+Pasta Corta,TCM Ecosystem,14,Interfacciamento con Tranciapiegatrici,5,4,4,5,,,634,792.5,966,1159.2,1600,1951.7
+Pasta Corta,TCM Ecosystem,15,Motorizzazione singola piani,20,30,30,30,,,3890,4862.5,1110,1332,5000,6194.5
+Pasta Corta,TCM Ecosystem,16,Motorizzaziooni a doppia polarità per comando piani,4,2,2,8,,,532,665,218,261.6,750,926.6
+Pasta Corta,TCM Ecosystem,17,Gruppo ByPass Idraulico con doppia valvola,4,2,2,4,,,416,520,304,364.8,720,884.8
+Pasta Corta,TCM Ecosystem,18,Espulsione Aria Trabatto comandata con Inverter,2,1,1,4,,,266,332.5,1434,1720.8,1700,2053.3
+Pasta Corta,TCM Ecosystem,19,Lama D'Aria Ingresso Trabatto,4,1,1,12,,,572,715,1128,1353.6,1700,2068.6
+Pasta Corta,TCM Ecosystem,20,Ventilazione Riscaldata  Sotto Trafila,1,2,2,8,,,421,526.25,679,814.8,1100,1341.05
+Pasta Corta,TCM Ecosystem,21,Ventilazioni comandate con Inverter,0,0,0,0,,,0,0,,,,
+Pasta Corta,TCM Ecosystem,22,TELECAMERE Ambientali (4 Telecamere),15,0,0,3,,,642,802.5,7358,8829.6,8000,9632.1

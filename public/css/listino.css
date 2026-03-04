@@ -109,6 +109,93 @@
 }
 
 /* ═══════════════════════════════════════════
+   UTILITÀ
+   ═══════════════════════════════════════════ */
+.hidden {
+    display: none !important;
+}
+
+/* ═══════════════════════════════════════════
+   SELECT DROPDOWN — Griglia di card
+   ═══════════════════════════════════════════ */
+.select-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.select-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.select-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-input {
+    width: 100%;
+    padding: 14px 40px 14px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    outline: none;
+}
+
+.select-input:hover:not(:disabled) {
+    border-color: var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.select-input:focus:not(:disabled) {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.select-input:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background: var(--surface);
+}
+
+.select-input option {
+    font-size: 14px;
+    padding: 8px;
+}
+
+.select-chevron {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--text-secondary);
+    transition: color var(--transition);
+}
+
+.select-input:focus~.select-chevron {
+    color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════
    INFO GENERALI — Griglia di card
    ═══════════════════════════════════════════ */
 .info-grid {
@@ -146,6 +233,49 @@
     font-weight: 600;
     color: var(--text-primary);
     letter-spacing: -0.2px;
+}
+
+/* ═══════════════════════════════════════════
+   COSTI SUMMARY — Card di riepilogo
+   ═══════════════════════════════════════════ */
+.costi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.costo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px;
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+}
+
+.costo-card-total {
+    background: var(--accent-light);
+    border-color: rgba(0, 113, 227, 0.15);
+}
+
+.costo-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.costo-value {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+}
+
+.costo-total {
+    color: var(--accent);
 }
 
 /* ═══════════════════════════════════════════
@@ -423,6 +553,14 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .select-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .costi-grid {
+        grid-template-columns: 1fr;
+    }
+
     .optionals-grid {
         grid-template-columns: 1fr;
     }
@@ -432,10 +570,16 @@
         padding: 10px 12px;
         font-size: 12px;
     }
+
+    .costo-value {
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 480px) {
-    .info-grid {
+
+    .info-grid,
+    .select-grid {
         grid-template-columns: 1fr;
     }
 }

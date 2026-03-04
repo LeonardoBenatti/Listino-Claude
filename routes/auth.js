@@ -2,11 +2,12 @@
  * routes/auth.js — Rotte di autenticazione
  *
  * Gestisce login e logout degli utenti.
- * Le credenziali vengono lette dal file .env.
+ * Le credenziali vengono lette dal file data/users.csv.
  */
 
 const express = require('express');
 const router = express.Router();
+const readCSV = require('../utils/csvReader');
 
 /**
  * GET / — Mostra la pagina di login
@@ -23,9 +24,9 @@ router.get('/', (req, res) => {
 
 /**
  * POST /login — Gestisce il tentativo di login
- * Valida username e password contro le variabili d'ambiente.
+ * Valida username e password contro il file CSV degli utenti.
  */
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     // Validazione: campi obbligatori
@@ -35,21 +36,32 @@ router.post('/login', (req, res) => {
         });
     }
 
-    // Controlla le credenziali
-    const validUser = process.env.ADMIN_USER;
-    const validPass = process.env.ADMIN_PASS;
+    try {
+        // Legge gli utenti dal file CSV
+        const utenti = await readCSV('data/users.csv');
 
-    if (username === validUser && password === validPass) {
-        // Login riuscito: imposta la sessione
-        req.session.authenticated = true;
-        req.session.username = username;
-        return res.redirect('/listino');
+        // Cerca corrispondenza username e password
+        const utente = utenti.find(u =>
+            u.username === username && u.password === password
+        );
+
+        if (utente) {
+            // Login riuscito: imposta la sessione
+            req.session.authenticated = true;
+            req.session.username = username;
+            return res.redirect('/listino');
+        }
+
+        // Credenziali errate
+        return res.render('login', {
+            error: 'Credenziali non valide. Riprova.'
+        });
+    } catch (err) {
+        console.error('Errore durante il login:', err.message);
+        return res.render('login', {
+            error: 'Errore interno. Riprova più tardi.'
+        });
     }
-
-    // Credenziali errate
-    return res.render('login', {
-        error: 'Credenziali non valide. Riprova.'
-    });
 });
 
 /**
